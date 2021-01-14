@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
