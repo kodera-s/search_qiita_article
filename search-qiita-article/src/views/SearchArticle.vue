@@ -20,6 +20,7 @@
 import Vue from 'vue'
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
+
 export default Vue.extend({
   name: 'SearchArticle',
   data () {
@@ -29,19 +30,16 @@ export default Vue.extend({
       message: 'Input search text'
     }
   },
+  computed: {
+    ...mapGetters([
+      'getQiitaDataSet'
+    ])
+  },
   watch: {
     keyword(){
       this.message = 'Waiting for you to stop typing...'
       this.debouncedGetAnswer()
     }
-  },
-  computed: {
-    getQiitaDataSet(){
-      return this.getQiitaDataSet
-    },
-    ...mapGetters([
-      'getQiitaDataSet'
-    ])
   },
   created () {
     this.debouncedGetAnswer = _.debounce(this.commitApi, 1000)
